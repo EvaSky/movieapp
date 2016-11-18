@@ -1,0 +1,17 @@
+package by.epam.movieapp.repository.exception;
+
+/**
+ * @author Olga Shahray
+ */
+public class RepositoryException extends Exception{
+    public RepositoryException() {
+    }
+
+    public RepositoryException(String message) {
+        super(message);
+    }
+
+    public RepositoryException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
