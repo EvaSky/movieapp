@@ -10,9 +10,7 @@ import java.util.List;
  */
 public interface IGenreRepository {
 
-    void save(Genre genre) throws RepositoryException;
-
-    void update(Genre genre) throws RepositoryException;
+    Genre save(Genre genre) throws RepositoryException;
 
     // false if not found
     boolean delete(int id) throws RepositoryException;
