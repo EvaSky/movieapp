@@ -1,4 +1,4 @@
-package by.epam.movieapp.repository.impl;
+package by.epam.movieapp.service.impl;
 
 import by.epam.movieapp.model.User;
 import by.epam.movieapp.repository.IUserRepository;
