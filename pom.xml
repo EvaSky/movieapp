@@ -23,6 +23,8 @@
     <slf4j.version>1.7.13</slf4j.version>
     <!-- Spring -->
     <spring.version>4.2.3.RELEASE</spring.version>
+    <!--Database-->
+    <postgres.version>9.4-1206-jdbc42</postgres.version>
     <!--Tests-->
     <junit.version>4.12</junit.version>
     <!--Tools-->
@@ -123,6 +125,13 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <!--Database-->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgres.version}</version>
     </dependency>
 
   </dependencies>
