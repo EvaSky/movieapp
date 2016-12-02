@@ -7,14 +7,14 @@ import java.util.Objects;
  * @author Olga Shahray
  */
 public class User {
-    private int id;
-    private String name;
-    private String email;
-    private String pass;
-    private String phone;
-    private String photo;
-    private LocalDateTime dateRegistration;
-    private Role role;
+    protected int id;
+    protected String name;
+    protected String email;
+    protected String pass;
+    protected String phone;
+    protected String photo;
+    protected LocalDateTime dateRegistration;
+    protected Role role;
 
     public User() {}
 
