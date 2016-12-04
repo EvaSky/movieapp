@@ -9,15 +9,9 @@ DROP TABLE IF EXISTS allgenres;
 DROP TABLE IF EXISTS films;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS users;
-DROP TYPE IF EXISTS orders_status;
-DROP TYPE IF EXISTS comments_status;
-DROP TYPE IF EXISTS professions;
-DROP TYPE IF EXISTS user_roles;
 DROP SEQUENCE IF EXISTS global_seq;
 
 CREATE SEQUENCE global_seq START 1;
-
-CREATE TYPE user_roles AS ENUM ('user', 'admin');
 
 CREATE TABLE users
 (
@@ -60,9 +54,9 @@ CREATE INDEX films_country_idx ON films (country_id);
 CREATE TABLE allgenres
 (
   id                INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-  genre             VARCHAR NOT NULL
+  genre_name        VARCHAR NOT NULL
 );
-CREATE UNIQUE INDEX allgenres_unique_genre_idx ON allgenres (genre);
+CREATE UNIQUE INDEX allgenres_unique_genre_idx ON allgenres (genre_name);
 
 CREATE TABLE filmgenres
 (
@@ -73,15 +67,13 @@ CREATE TABLE filmgenres
   FOREIGN KEY (genre_id) REFERENCES allgenres (id) ON DELETE CASCADE
 );
 
-CREATE TYPE professions AS ENUM ('actor', 'director');
-
 CREATE TABLE allfilmmakers
 (
   id                INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   name              VARCHAR NOT NULL,
   profession        VARCHAR NOT NULL
 );
-CREATE UNIQUE INDEX allfilmmakers_unique_name_idx ON allfilmmakers (name);
+CREATE UNIQUE INDEX allfilmmakers_unique_name_idx ON allfilmmakers (name, profession);
 
 CREATE TABLE filmmakers
 (
@@ -91,8 +83,6 @@ CREATE TABLE filmmakers
   FOREIGN KEY (film_id) REFERENCES films (id) ON DELETE CASCADE,
   FOREIGN KEY (person_id) REFERENCES allfilmmakers (id) ON DELETE CASCADE
 );
-
-CREATE TYPE comments_status AS ENUM ('new', 'checked', 'rejected');
 
 CREATE TABLE comments
 (
@@ -106,8 +96,6 @@ CREATE TABLE comments
   FOREIGN KEY (film_id) REFERENCES films (id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
-
-CREATE TYPE orders_status AS ENUM ('unpaid', 'awaiting', 'paid');
 
 CREATE TABLE orders
 (

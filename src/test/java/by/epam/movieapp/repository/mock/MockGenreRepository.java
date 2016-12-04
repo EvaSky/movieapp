@@ -22,6 +22,12 @@ public class MockGenreRepository implements IGenreRepository {
     }
 
     @Override
+    public Genre get(int id) throws RepositoryException {
+        LOG.info("get genre in MockGenreRepository");
+        return null;
+    }
+
+    @Override
     public boolean delete(int id) throws RepositoryException {
         LOG.info("delete genre" + id + " in MockGenreRepository");
         return true;

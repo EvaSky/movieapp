@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 public class SpringMain {
     public static void main(String[] args) {
-        try(ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-app.xml")){
+        try(ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/mock.xml")){
             System.out.println(Arrays.toString(context.getBeanDefinitionNames()));
             /*UserServiceImpl service = context.getBean(UserServiceImpl.class);
             System.out.println(service.getUserRepository());*/

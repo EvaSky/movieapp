@@ -1,5 +1,6 @@
 package by.epam.movieapp.web.mock;
 
+import by.epam.movieapp.model.Role;
 import by.epam.movieapp.model.User;
 import by.epam.movieapp.repository.IUserRepository;
 import by.epam.movieapp.repository.exception.RepositoryException;
@@ -14,8 +15,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
-import static by.epam.movieapp.TestData.ADMIN;
-import static by.epam.movieapp.TestData.USER;
+import static by.epam.movieapp.UserTestData.ADMIN;
+import static by.epam.movieapp.UserTestData.USER;
 
 /**
  * @author Olga Shahray
@@ -26,7 +27,7 @@ public class UserMockTest {
 
     @BeforeClass
     public static void beforeClass(){
-        context = new ClassPathXmlApplicationContext("spring/spring-app.xml");
+        context = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/mock.xml");
         System.out.println("\n" + Arrays.toString(context.getBeanDefinitionNames()) + "\n");
         controller = context.getBean(UserRestController.class);
     }
@@ -53,7 +54,7 @@ public class UserMockTest {
 
     @Test
     public void testSave(){
-        controller.save(new User(0, "User"));
+        controller.save(new User(0, "TestUser", "email@example.com", "Password123", "1234567", Role.USER));
     }
 
     @Test
