@@ -23,6 +23,10 @@ public class Genre {
         this.id = id;
     }
 
+    public Genre(Genre genre) {
+        this(genre.getId(), genre.getGenreName());
+    }
+
     public int getId() {
         return id;
     }
@@ -64,5 +68,9 @@ public class Genre {
                 "id=" + id +
                 ", genreName='" + genreName + '\'' +
                 '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

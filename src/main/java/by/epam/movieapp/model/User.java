@@ -1,6 +1,6 @@
 package by.epam.movieapp.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -13,13 +13,13 @@ public class User {
     protected String pass;
     protected String phone;
     protected String photo;
-    protected LocalDateTime dateRegistration;
+    protected Date dateRegistration = new Date();
     protected Role role;
 
     public User() {}
 
     public User(int id, String name, String email, String pass, String phone, String photo,
-                LocalDateTime dateRegistration, Role role) {
+                Date dateRegistration, Role role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -30,24 +30,26 @@ public class User {
         this.role = role;
     }
 
-    public User(String name, String email, String pass, String phone, LocalDateTime dateRegistration, Role role) {
+    public User(String name, String email, String pass, String phone, Role role) {
         this.name = name;
         this.email = email;
         this.pass = pass;
         this.phone = phone;
-        this.dateRegistration = dateRegistration;
         this.role = role;
     }
 
-    public User(int id, String name, String photo) {
+    public User(int id, String name, String email, String pass, String phone, Role role) {
         this.id = id;
         this.name = name;
-        this.photo = photo;
+        this.email = email;
+        this.pass = pass;
+        this.phone = phone;
+        this.role = role;
     }
-    public User(int id, String name) {
-        this.id = id;
-        this.name = name;
 
+    public User(User user) {
+        this(user.getId(), user.getName(), user.getEmail(), user.getPass(), user.getPhone(), user.getPhoto(),
+                user.getDateRegistration(), user.getRole());
     }
 
     public int getId() {
@@ -90,11 +92,11 @@ public class User {
         this.phone = phone;
     }
 
-    public LocalDateTime getDateRegistration() {
+    public Date getDateRegistration() {
         return dateRegistration;
     }
 
-    public void setDateRegistration(LocalDateTime dateRegistration) {
+    public void setDateRegistration(Date dateRegistration) {
         this.dateRegistration = dateRegistration;
     }
 
