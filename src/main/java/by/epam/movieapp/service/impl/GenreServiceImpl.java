@@ -1,4 +1,4 @@
-package by.epam.movieapp.service.mock;
+package by.epam.movieapp.service.impl;
 
 import by.epam.movieapp.model.Genre;
 import by.epam.movieapp.repository.IGenreRepository;
@@ -15,11 +15,21 @@ import java.util.List;
  */
 @Service
 public class GenreServiceImpl implements IGenreService {
+
     @Autowired
     private IGenreRepository genreRepository;
 
     @Override
-    public void save(Genre genre) throws ServiceException {
+    public Genre save(Genre genre) throws ServiceException {
+        try {
+            return genreRepository.save(genre);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void update(Genre genre) throws ServiceException {
         try {
             genreRepository.save(genre);
         } catch (RepositoryException e) {
@@ -28,9 +38,9 @@ public class GenreServiceImpl implements IGenreService {
     }
 
     @Override
-    public void update(int id, String genre) throws ServiceException {
+    public Genre get(int id) throws ServiceException {
         try {
-            genreRepository.save(new Genre(id, genre));
+            return genreRepository.get(id);
         } catch (RepositoryException e) {
             throw new ServiceException(e);
         }

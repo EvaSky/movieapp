@@ -12,6 +12,8 @@ public interface IGenreRepository {
 
     Genre save(Genre genre) throws RepositoryException;
 
+    Genre get(int id) throws RepositoryException;
+
     // false if not found
     boolean delete(int id) throws RepositoryException;
 

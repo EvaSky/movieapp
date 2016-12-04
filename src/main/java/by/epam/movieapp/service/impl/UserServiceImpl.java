@@ -2,35 +2,66 @@ package by.epam.movieapp.service.impl;
 
 import by.epam.movieapp.model.User;
 import by.epam.movieapp.repository.IUserRepository;
+import by.epam.movieapp.repository.exception.RepositoryException;
 import by.epam.movieapp.service.IUserService;
 import by.epam.movieapp.service.exception.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * @author Olga Shahray
  */
-public class UserServiceImpl implements IUserService {
+@Service
+public class UserServiceImpl implements IUserService{
+
+    @Autowired
     private IUserRepository userRepository;
 
     @Override
     public User save(User user) throws ServiceException {
-        return null;
+        try {
+            return userRepository.save(user);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void update(User user) throws ServiceException {
+        try {
+            userRepository.save(user);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
     public User get(int id) throws ServiceException {
-        return null;
+        try {
+            return userRepository.get(id);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
     public void delete(int id) throws ServiceException {
-
+        try {
+            userRepository.delete(id);
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
     public List<User> getAll() throws ServiceException {
-        return null;
+        try {
+            return userRepository.getAll();
+        } catch (RepositoryException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
@@ -38,13 +69,12 @@ public class UserServiceImpl implements IUserService {
         return null;
     }
 
-    @Override
-    public int checkEmail(String email) throws ServiceException {
-        return 0;
+
+    public IUserRepository getUserRepository() {
+        return userRepository;
     }
 
-    @Override
-    public void updateUserPass(User loggedUser, String newPass, String confirmPass) throws ServiceException {
-
-    }
+    /*public void setUserRepository(IUserRepository userRepository) {
+        this.userRepository = userRepository;
+    }*/
 }

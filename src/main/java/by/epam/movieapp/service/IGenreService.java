@@ -10,9 +10,11 @@ import java.util.List;
  */
 public interface IGenreService {
 
-    void save(Genre genre) throws ServiceException;
+    Genre save(Genre genre) throws ServiceException;
 
-    void update(int id, String genre) throws ServiceException;
+    void update(Genre genre) throws ServiceException;
+
+    Genre get(int id) throws ServiceException;
 
     boolean delete(int id) throws ServiceException;
 

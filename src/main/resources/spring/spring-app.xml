@@ -14,7 +14,7 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="by.epam.**.repository"/>
+
     <context:component-scan base-package="by.epam.**.service"/>
     <context:component-scan base-package="by.epam.**.web"/>
 
