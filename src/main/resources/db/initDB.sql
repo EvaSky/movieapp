@@ -36,7 +36,7 @@ CREATE TABLE films
 (
   id                INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   title             VARCHAR NOT NULL,
-  release_year      SMALLINT CHECK (release_year > 1900),
+  year              SMALLINT CHECK (year > 1900),
   country_id        INTEGER NOT NULL,
   description       TEXT NOT NULL,
   duration          SMALLINT CHECK (duration > 0),
@@ -120,7 +120,11 @@ CREATE TABLE preferences
 
 CREATE TABLE discount
 (
-  discount_id       INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  id                INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
   sum_from          NUMERIC CHECK (sum_from >= 0.0),
-  value             NUMERIC CHECK (value > 0.0)
+  value             NUMERIC CHECK (value >= 0.0)
 );
+
+
+
+
