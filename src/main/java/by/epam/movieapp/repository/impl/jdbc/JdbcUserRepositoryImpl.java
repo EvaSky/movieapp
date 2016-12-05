@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Repository
 public class JdbcUserRepositoryImpl implements IUserRepository {
-    /*private static final BeanPropertyRowMapper<User> ROW_MAPPER = BeanPropertyRowMapper.newInstance(User.class);*/
+
     private static final RowMapper<User> ROW_MAPPER =
             (rs, rowNum) ->
                     new User(rs.getInt("id"), rs.getString("name"), rs.getString("email"),

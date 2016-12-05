@@ -12,8 +12,6 @@ public interface IDiscountRepository {
 
     void save(Discount discount) throws RepositoryException;
 
-    void update(Discount discount) throws RepositoryException;
-
     Discount getUserDiscount(int userId)  throws RepositoryException;
 
     // false if not found
@@ -21,5 +19,5 @@ public interface IDiscountRepository {
 
     List<Discount> getAll() throws RepositoryException;
 
-
+    Discount get(int id) throws RepositoryException;
 }

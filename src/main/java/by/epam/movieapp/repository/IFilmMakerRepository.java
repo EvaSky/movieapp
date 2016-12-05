@@ -12,8 +12,6 @@ public interface IFilmMakerRepository {
 
     void save(FilmMaker filmMaker) throws RepositoryException;
 
-    void update(FilmMaker filmMaker) throws RepositoryException;
-
     // false if not found
     boolean delete(int id) throws RepositoryException;
 

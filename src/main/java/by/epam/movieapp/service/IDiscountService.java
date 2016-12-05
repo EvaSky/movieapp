@@ -11,13 +11,17 @@ import java.util.List;
  */
 public interface IDiscountService {
 
-    void save(double sumFrom, double value) throws ServiceException;
+    void save(Discount discount) throws ServiceException;
 
-    void update(int id, double sumFrom, double value) throws ServiceException;
+    void update(Discount discount) throws ServiceException;
+
+    Discount get(int id)  throws ServiceException;
 
     boolean delete(int id) throws ServiceException;
 
     List<Discount> getAll() throws ServiceException;
 
-    double getDiscount(int userId) throws ServiceException;
+    double getUserDiscount(int userId) throws ServiceException;
+
+
 }

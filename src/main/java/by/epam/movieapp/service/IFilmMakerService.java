@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface IFilmMakerService {
 
-    void save(String... params) throws ServiceException;
+    void save(FilmMaker filmMaker) throws ServiceException;
 
-    void update(int id, String... params) throws ServiceException;
+    void update(FilmMaker filmMaker) throws ServiceException;
 
     // false if not found
     boolean delete(int id) throws ServiceException;

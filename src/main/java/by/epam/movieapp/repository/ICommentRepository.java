@@ -11,16 +11,18 @@ import java.util.List;
  */
 public interface ICommentRepository {
 
-    void save(Comment comment) throws RepositoryException;
-
-    void update(int id, CommentStatus status) throws RepositoryException;
+    Comment save(Comment comment, int filmId, int userId) throws RepositoryException;
 
     // false if not found
-    boolean delete(int id) throws RepositoryException;
+    boolean delete(int id, int filmId, int userId) throws RepositoryException;
+
+    Comment get(int id, int filmId, int userId)throws RepositoryException;
 
     List<Comment> getAllOfUser(int userId) throws RepositoryException;
 
     List<Comment> getAllOfFilm(int filmId) throws RepositoryException;
+
+    List<Comment> getAll() throws RepositoryException;
 
     List<Comment> getByStatus(CommentStatus status, int offset, int count) throws RepositoryException;
 

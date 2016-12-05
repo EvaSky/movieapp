@@ -12,8 +12,7 @@ public interface ICountryRepository {
 
     void save(Country country) throws RepositoryException;
 
-    void update(Country country) throws RepositoryException;
-
+    Country get(int id)  throws RepositoryException;
     // false if not found
     boolean delete(int countryId) throws RepositoryException;
 

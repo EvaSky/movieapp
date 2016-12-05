@@ -10,13 +10,15 @@ import java.util.List;
  */
 public interface IFilmService {
 
-    void save(String[] genres, String[] filmMakers, Object... params) throws ServiceException;
+    void save(Film film) throws ServiceException;
 
-    void update(int id, String[] genres, String[] filmMakers, Object... params) throws ServiceException;
+    void update(Film film) throws ServiceException;
 
     Film get(int id) throws ServiceException;
 
     boolean delete(int id) throws ServiceException;
+
+    List<Film> getAll() throws ServiceException;
 
     List<Film> getByYear(int year, int offset, int count) throws ServiceException;
 

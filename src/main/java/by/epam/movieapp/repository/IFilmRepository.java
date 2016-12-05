@@ -19,8 +19,6 @@ public interface IFilmRepository {
 
     void saveFilmMakers(int filmId, List<FilmMaker> filmMakers) throws RepositoryException;
 
-    void update(Film film) throws RepositoryException;
-
     // false if not found
     boolean delete(int id) throws RepositoryException;
 
@@ -51,4 +49,6 @@ public interface IFilmRepository {
     List<Film> search(String[] keywords) throws RepositoryException;
 
     boolean isFavoriteFilm(int userId, int filmId)throws RepositoryException;
+
+    List<Film> getAll() throws RepositoryException;
 }

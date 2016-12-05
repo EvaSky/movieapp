@@ -11,15 +11,13 @@ import java.util.List;
  */
 public interface IOrderRepository {
 
-    void save(Order order) throws RepositoryException;
-
-    void updateStatus(int orderId, OrderStatus status) throws RepositoryException;
+    void save(Order order, int filmId, int userId) throws RepositoryException;
 
     // false if not found
-    boolean delete(int id) throws RepositoryException;
+    boolean delete(int id, int filmId, int userId) throws RepositoryException;
 
     // null if not found
-    Order get(int id) throws RepositoryException;
+    Order get(int id, int filmId, int userId) throws RepositoryException;
 
     List<Order> getOrdersOfUser(int userId, OrderStatus status) throws RepositoryException;
 
