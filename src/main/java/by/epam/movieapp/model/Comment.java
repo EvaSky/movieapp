@@ -11,19 +11,34 @@ public class Comment {
     private User user;
     private Film film;
     private int mark;
-    private String text;
-    private LocalDateTime dateComment;
+    private String comment;
+    private LocalDateTime dateComment = LocalDateTime.now();
     private CommentStatus status;
 
     public Comment() {
     }
 
-    public Comment(User user, Film film, int mark, String text, LocalDateTime dateComment, CommentStatus status) {
+    public Comment(User user, Film film, int mark, String comment, LocalDateTime dateComment, CommentStatus status) {
         this.user = user;
         this.film = film;
         this.mark = mark;
-        this.text = text;
+        this.comment = comment;
         this.dateComment = dateComment;
+        this.status = status;
+    }
+
+    public Comment(int id, int mark, String comment, LocalDateTime dateComment, CommentStatus status) {
+        this.id = id;
+        this.mark = mark;
+        this.comment = comment;
+        this.dateComment = dateComment;
+        this.status = status;
+    }
+
+    public Comment(int id, int mark, String comment, CommentStatus status) {
+        this.id = id;
+        this.mark = mark;
+        this.comment = comment;
         this.status = status;
     }
 
@@ -51,12 +66,12 @@ public class Comment {
         this.mark = mark;
     }
 
-    public String getText() {
-        return text;
+    public String getComment() {
+        return comment;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public LocalDateTime getDateComment() {
@@ -87,18 +102,33 @@ public class Comment {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o.getClass() != this.getClass()) return false;
-        Comment comment = (Comment) o;
-        return id == comment.id &&
-                mark == comment.mark &&
-                Objects.equals(user, comment.user) &&
-                Objects.equals(film, comment.film) &&
-                Objects.equals(text, comment.text) &&
-                Objects.equals(dateComment, comment.dateComment) &&
-                status == comment.status;
+        Comment otherComment = (Comment) o;
+        return id == otherComment.id &&
+                mark == otherComment.mark &&
+                Objects.equals(user, otherComment.user) &&
+                Objects.equals(film, otherComment.film) &&
+                Objects.equals(comment, otherComment.comment) &&
+                Objects.equals(dateComment, otherComment.dateComment) &&
+                status == otherComment.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, film, mark, text, dateComment, status);
+        return Objects.hash(id, user, film, mark, comment, dateComment, status);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", mark=" + mark +
+                ", comment='" + comment + '\'' +
+                ", dateComment=" + dateComment +
+                ", status=" + status +
+                '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

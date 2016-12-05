@@ -8,22 +8,26 @@ import java.util.Objects;
 public class Country {
 
     private int id;
-    private  String countryName;
+    private  String country;
 
     public Country() {
     }
 
     public Country(int id, String countryName) {
         this.id = id;
-        this.countryName = countryName;
+        this.country = countryName;
     }
 
     public Country(String countryName) {
-        this.countryName = countryName;
+        this.country = countryName;
     }
 
     public Country(int id) {
         this.id = id;
+    }
+
+    public Country(Country country) {
+        this(country.getId(), country.getCountry());
     }
 
     public int getId() {
@@ -34,12 +38,12 @@ public class Country {
         this.id = id;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountry(String countryName) {
+        this.country = countryName;
     }
 
     @Override
@@ -48,12 +52,24 @@ public class Country {
         if (o.getClass() != this.getClass()) return false;
         Country country = (Country) o;
         return id == country.id &&
-                Objects.equals(countryName, country.countryName);
+                Objects.equals(this.country, country.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, countryName);
+        return Objects.hash(id, country);
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }
 

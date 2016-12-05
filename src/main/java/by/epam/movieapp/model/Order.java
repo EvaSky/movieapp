@@ -11,11 +11,26 @@ public class Order {
     private int id;
     private Film film;
     private User user;
-    private LocalDateTime dateSale;
+    private LocalDateTime dateSale = LocalDateTime.now();
     private double sum;
     private OrderStatus status;
 
     public Order() {
+    }
+
+    public Order(int id, Film film, User user, double sum, OrderStatus status) {
+        this.id = id;
+        this.film = film;
+        this.user = user;
+        this.sum = sum;
+        this.status = status;
+    }
+
+    public Order(Film film, User user, double sum, OrderStatus status) {
+        this.film = film;
+        this.user = user;
+        this.sum = sum;
+        this.status = status;
     }
 
     public Order(int id, Film film, User user, LocalDateTime dateSale, double sum, OrderStatus status) {
@@ -27,13 +42,22 @@ public class Order {
         this.status = status;
     }
 
-    public Order(Film film, User user, LocalDateTime dateSale, double sum, OrderStatus status) {
-        this.film = film;
-        this.user = user;
+    public Order(int id, LocalDateTime dateSale, double sum, OrderStatus status) {
+        this.id = id;
         this.dateSale = dateSale;
         this.sum = sum;
         this.status = status;
     }
+
+    public Order(Order order) {
+        this(order.getId(), order.getFilm(), order.getUser(), order.getDateSale(), order.getSum(), order.getStatus());
+    }
+
+    public Order(double sum, OrderStatus status) {
+        this.sum = sum;
+        this.status = status;
+    }
+
 
     public int getId() {
         return id;
@@ -111,5 +135,9 @@ public class Order {
                 ", sum=" + sum +
                 ", status='" + status + '\'' +
                 '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

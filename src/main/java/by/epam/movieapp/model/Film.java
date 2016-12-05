@@ -19,7 +19,7 @@ public class Film {
     private double price;
     private String poster;
     private double rating;
-    private LocalDate dateAdd;
+    private LocalDate dateAdd = LocalDate.now();
     private String video;
     private List<Genre> genreList = new ArrayList<>();
     private List<FilmMaker> filmMakerList = new ArrayList<>();
@@ -28,9 +28,10 @@ public class Film {
     public Film() {
     }
 
-    public Film(String title, int year, String description, int duration, int ageRestriction, double price, String poster, String video) {
+    public Film(String title, int year, Country country, String description, int duration, int ageRestriction, double price, String poster, String video) {
         this.title = title;
         this.year = year;
+        this.country = country;
         this.description = description;
         this.duration = duration;
         this.ageRestriction = ageRestriction;
@@ -90,6 +91,41 @@ public class Film {
         this.genreList = genreList;
         this.filmMakerList = filmMakerList;
         this.commentsList = commentsList;
+    }
+
+    public Film(int id, String title, int year, String description, int duration, int ageRestriction, double price,
+                String poster, double rating, LocalDate dateAdd, String video) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.description = description;
+        this.duration = duration;
+        this.ageRestriction = ageRestriction;
+        this.price = price;
+        this.poster = poster;
+        this.rating = rating;
+        this.dateAdd = dateAdd;
+        this.video = video;
+    }
+
+    public Film(int id, String title, int year, Country country, String description, int duration, int ageRestriction, double price, double rating, String poster, String video) {
+        this.id = id;
+        this.title = title;
+        this.year = year;
+        this.country = country;
+        this.description = description;
+        this.duration = duration;
+        this.ageRestriction = ageRestriction;
+        this.price = price;
+        this.rating = rating;
+        this.poster = poster;
+        this.video = video;
+    }
+
+    public Film(Film film) {
+        this(film.id, film.getTitle(), film.getYear(), film.getCountry(), film.getDescription(), film.getDuration(),
+                film.getAgeRestriction(), film.getPrice(), film.getPoster(), film.getRating(), film.getDateAdd(),
+                film.getVideo(), film.getGenreList(), film.getFilmMakerList(), film.getCommentsList());
     }
 
     public int getId() {
@@ -266,5 +302,9 @@ public class Film {
                 ", filmMakerList=" + filmMakerList +
                 ", commentsList=" + commentsList +
                 '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

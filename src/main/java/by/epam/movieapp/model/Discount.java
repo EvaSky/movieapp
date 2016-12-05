@@ -22,6 +22,10 @@ public class Discount {
         this.value = value;
     }
 
+    public Discount(Discount discount) {
+        this(discount.getId(), discount.getSumFrom(), discount.getValue());
+    }
+
     public int getId() {
         return id;
     }
@@ -78,5 +82,9 @@ public class Discount {
                 ", sumFrom=" + sumFrom +
                 ", discount=" + value +
                 '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }

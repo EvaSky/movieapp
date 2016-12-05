@@ -26,6 +26,10 @@ public class FilmMaker {
         this.id = id;
     }
 
+    public FilmMaker(FilmMaker filmMaker) {
+        this(filmMaker.getId(), filmMaker.getName(), filmMaker.getProfession());
+    }
+
     public int getId() {
         return id;
     }
@@ -78,5 +82,9 @@ public class FilmMaker {
                 ", name='" + name + '\'' +
                 ", profession=" + profession +
                 '}';
+    }
+
+    public boolean isNew() {
+        return id == 0;
     }
 }
